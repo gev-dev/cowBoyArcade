@@ -1,6 +1,9 @@
 import pygame
-from sys import exit
+import sys
 from random import randint, choice
+
+from pygame import FULLSCREEN
+
 
 class Player(pygame.sprite.Sprite):
 	def __init__(self):
@@ -91,15 +94,23 @@ def collision_sprite():
 
 
 pygame.init()
-screen = pygame.display.set_mode((800,600))
+
+if sys.platform == 'linux':
+
+	pygame.mouse.set_visible(0)
+	screen = pygame.display.set_mode((800, 400), FULLSCREEN)
+	#import RPi.GPIO as GPIO  # Импортируем библиотеку по работе с GPIO
+else:
+	pygame.mouse.set_visible(1)
+	screen = pygame.display.set_mode((800,400))
 pygame.display.set_caption('Runner')
 clock = pygame.time.Clock()
 test_font = pygame.font.Font('font/Pixeltype.ttf', 50)
 game_active = False
 start_time = 0
 score = 0
-bg_music = pygame.mixer.Sound('audio/music.wav')
-bg_music.play(loops = -1)
+# bg_music = pygame.mixer.Sound('audio/music.wav')
+# bg_music.play(loops = -1)
 
 #Groups
 player = pygame.sprite.GroupSingle()
