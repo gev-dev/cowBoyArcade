@@ -98,7 +98,7 @@ pygame.init()
 if sys.platform == 'linux':
 
 	pygame.mouse.set_visible(0)
-	screen = pygame.display.set_mode((800, 400), FULLSCREEN)
+	screen = pygame.display.set_mode((800, 480), FULLSCREEN)
 	#import RPi.GPIO as GPIO  # Импортируем библиотеку по работе с GPIO
 else:
 	pygame.mouse.set_visible(1)
